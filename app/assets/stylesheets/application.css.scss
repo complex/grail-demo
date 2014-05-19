@@ -1,0 +1,56 @@
+//= require_tree .
+//= require_self
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'helvetica neue', 'arial', sans-serif;
+  font-size: 16px;
+  color: #000;
+  background: #ccc;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 1em;
+}
+
+input,
+button {
+  font-family: 'helvetica neue', 'arial', sans-serif;
+  font-size: 16px;
+  outline: none;
+  border-radius: .2rem;
+  -webkit-font-smoothing: antialiased;
+  &:focus {
+
+  }
+}
+
+input[type=submit],
+button {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+}
+
+main {
+  margin: 1rem;
+}
+
+@media (min-width: 40rem) {
+
+  main {
+    margin: 5rem;
+  }
+
+}

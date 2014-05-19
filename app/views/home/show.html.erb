@@ -1,0 +1,37 @@
+<section id='introduction'>
+  <h1>Grail</h1>
+  <p>Grail is a couple of small Sass mixins you can use to quickly construct a grid layout.</p>
+</section>
+
+<section class='example' id='example-1'>
+  <h1>Example</h1>
+  <div class='buttons'>
+    <button>One column</button>
+    <button>Two columns</button>
+    <button>Three columns</button>
+    <button>Six columns</button>
+  </div>
+  <div class='one-column' id='grid-1'>
+    <% for number in [ 1, 2, 3, 4, 5, 6 ] do %>
+      <div>
+        <% (number * 2).times do %>
+          <p></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<!-- <section class='example' id='example-2'>
+  <h1>Example 2</h1>
+  <div>
+    <div>
+      <p></p>
+    </div>
+  </div>
+</section> -->
+
+<section id='documentation'>
+  <h1>Documentation</h1>
+  <p>Soon!</p>
+</section>

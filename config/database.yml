@@ -1,0 +1,11 @@
+default: &default
+  adapter: postgresql
+  hostname: localhost
+
+development:
+  <<: *default
+  database: grail-demo-development
+
+test:
+  <<: *default
+  database: grail-demo-development

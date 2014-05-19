@@ -1,0 +1,114 @@
+@import 'grail';
+
+.example {
+
+  p {
+    margin-bottom: 0;
+    height: 2rem;
+    background: rgba(0, 0, 0, .9);
+  }
+
+  button {
+    line-height: 2rem;
+    background: none;
+    border: solid .15rem #fff;
+    &:nth-child(3),
+    &:nth-child(4) {
+      display: none !important;
+    }
+  }
+
+}
+
+#example-1 {
+
+  .buttons {
+    @include columns(1, 1rem);
+    margin-top: 1em;
+  }
+
+  #grid-1 {
+    margin-top: 1rem;
+    &.one-column {
+      @include columns(1);
+    }
+    &.two-columns {
+      @include columns(2);
+    }
+    &.three-columns {
+      @include columns(3);
+    }
+    &.six-columns {
+      @include columns(6);
+    }
+
+    > div {
+      padding: 1rem;
+      &:nth-child(1) {
+        @include columns(1, 1rem);
+        background: #fff;
+      }
+      &:nth-child(2) {
+        @include columns(2, 1rem);
+        background: #66faff;
+      }
+      &:nth-child(3) {
+        @include columns(3, 1rem);
+        background: #59e864;
+      }
+      &:nth-child(4) {
+        @include columns(4, 1rem);
+        background: #fffc6a;
+      }
+      &:nth-child(5) {
+        @include columns(5, 1rem);
+        background: #e8b355;
+      }
+      &:nth-child(6) {
+        @include columns(6, 1rem);
+        background: #ff7a5e;
+      }
+    }
+
+  }
+
+}
+
+#example-2 {
+
+  > div {
+
+  }
+
+}
+
+
+@media (min-width: 40rem) {
+
+  #example-1 .buttons {
+    @include columns(2, 1rem);
+
+    button:nth-child(3) {
+      @include span(2 of 2);
+      display: block !important;
+    }
+
+  }
+
+}
+
+@media (min-width: 70rem) {
+
+  #example-1 .buttons {
+    @include columns(4, 1rem);
+
+    button:nth-child(3) {
+      @include span(1 of 4, 1rem);
+    }
+    button:nth-child(4) {
+      display: block !important;
+    }
+
+  }
+
+}
