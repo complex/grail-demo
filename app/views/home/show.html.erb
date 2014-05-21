@@ -1,10 +1,9 @@
 <section id='introduction'>
   <h1>Grail</h1>
-  <p>Grail is a couple of small Sass mixins you can use to quickly construct a grid layout.</p>
+  <p><%= link_to "Grail", 'http://github.com/harmed/grail' %> is a couple of Sass mixins you can use to quickly construct a grid layout.</p>
 </section>
 
 <section class='example' id='example-1'>
-  <h1>Example</h1>
   <div class='buttons'>
     <button>One column</button>
     <button>Two columns</button>
@@ -22,16 +21,183 @@
   </div>
 </section>
 
-<!-- <section class='example' id='example-2'>
-  <h1>Example 2</h1>
-  <div>
-    <div>
-      <p></p>
-    </div>
-  </div>
-</section> -->
-
 <section id='documentation'>
-  <h1>Documentation</h1>
-  <p>Soon!</p>
+
+  <article>
+    <h2>Columns</h2>
+    <p>To create equal width columns, just include the <em>columns()</em> mixin and pass in the number of columns you want. If there are more child elements than columns specified, you'll end up with multiple rows.</p>
+    <figure id='first'>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+    </figure>
+    <code>
+<pre>&lt;figure&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+&lt;/figure&gt;</pre>
+<pre><em>figure</em> {
+  <mark>@include columns(3);</mark>
+}</pre>
+    </code>
+  </article>
+
+  <article>
+    <h2>Gutters</h2>
+    <p>To add spacing between columns and rows, <em>columns()</em> takes a second parameter — either a fixed size or a percentage.</p>
+    <figure id='second'>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+    </figure>
+    <code>
+<pre>&lt;figure&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+&lt;/figure&gt;</pre>
+<pre><em>figure</em> {
+  @include columns(3, <mark>1rem</mark>);
+}</pre>
+    </code>
+  </article>
+
+  <article>
+    <h2>Spans</h2>
+    <p>To create unequal width columns, use the <em>span()</em> mixin. <em>span()</em>'s first argument specifies the width as a fraction. If you're using gutters, you must pass the amount as the second argument.</p>
+    <figure id='third'>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+    </figure>
+    <code>
+<pre>&lt;figure&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+&lt;/figure&gt;</pre>
+<pre><em>figure</em> {
+  @include columns(2, 1rem);
+}
+<em>p</em> {
+  <em>&:nth-child(1)</em> {
+    <mark>@include span(1 of 3, 1rem);</mark>
+  }
+  <em>&:nth-child(2)</em> {
+    <mark>@include span(2 of 3, 1rem);</mark>
+  }
+  <em>&:nth-child(3)</em> {
+    <mark>@include span(4 of 10, 1rem);</mark>
+  }
+  <em>&:nth-child(4)</em> {
+    <mark>@include span(6 of 10, 1rem);</mark>
+  }
+  <em>&:nth-child(5)</em> {
+    <mark>@include span(13 of 16, 1rem);</mark>
+  }
+  <em>&:nth-child(6)</em> {
+    <mark>@include span(3 of 16, 1rem);</mark>
+  }
+}</pre>
+    </code>
+  </article>
+
+    <article>
+      <h2>Nesting</h2>
+      <p>A grid can be nested by simply adding the <em>columns()</em> mixin to a child element. Nested grids can have different gutter amounts.</p>
+      <figure id='fourth'>
+        <p></p>
+        <p>
+          <span></span>
+          <span></span>
+        </p>
+        <p></p>
+        <p></p>
+        <p>
+          <span></span>
+          <span></span>
+          <span></span>
+        </p>
+        <p></p>
+      </figure>
+      <code>
+<pre>&lt;figure&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;
+    &lt;span&gt;&lt;/span&gt;
+    &lt;span&gt;&lt;/span&gt;
+  &lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;
+    &lt;span&gt;&lt;/span&gt;
+    &lt;span&gt;&lt;/span&gt;
+    &lt;span&gt;&lt;/span&gt;
+  &lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+&lt;/figure&gt;</pre>
+<pre><em>figure</em> {
+  @include columns(2, 1rem);
+}
+<em>p</em> {
+  <em>&:nth-child(1)</em> {
+    @include span(1 of 3, 1rem);
+  }
+  <em>&:nth-child(2)</em> {
+    @include span(2 of 3, 1rem);
+    <mark>@include columns(2, 2rem);</mark>
+  }
+  <em>&:nth-child(3)</em> {
+    @include span(4 of 10, 1rem);
+  }
+  <em>&:nth-child(4)</em> {
+    @include span(6 of 10, 1rem);
+  }
+  <em>&:nth-child(5)</em> {
+    @include span(13 of 16, 1rem);
+    <mark>@include columns(3, 2rem);</mark>
+    <em>span</em> {
+      <em>&:nth-child(1)</em> {
+        <mark>@include span(1 of 6, 2rem);</mark>
+      }
+      <em>&:nth-child(2)</em> {
+        <mark>@include span(3 of 6, 2rem);</mark>
+      }
+      <em>&:nth-child(3)</em> {
+        <mark>@include span(2 of 6, 2rem);</mark>
+      }
+    }
+  }
+  <em>&:nth-child(6)</em> {
+    @include span(3 of 16, 1rem);
+  }
+}</pre>
+      </code>
+    </article>
+
+    <article>
+      <h2>Notes</h2>
+      <p>Grail uses the <%= link_to "calc", 'http://caniuse.com/calc' %> function to create margin-based gutters and the <%= link_to ":nth-child", 'http://caniuse.com/css-sel3' %> pseudoclass to maintain the correct margins with multiple rows.</p>
+      <p>Grail was created by <%= link_to "Harm", 'http://harm.io' %> in 2014.</p>
+    </article>
+
 </section>

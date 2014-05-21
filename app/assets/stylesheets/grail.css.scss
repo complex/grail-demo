@@ -1,8 +1,5 @@
-@function width-calc ($columns: 1, $spacing: 0rem) {
-  @return calc(#{ 100% / $columns } - #{ ($columns - 1) / $columns * $spacing });
-}
-
 @mixin columns ($columns: 1, $spacing: 0rem) {
+  display: block;
   box-sizing: border-box;
   &:after {
     content: '';
@@ -10,10 +7,11 @@
     clear: both;
   }
   > * {
-    box-sizing: border-box;
     display: block;
+    box-sizing: border-box;
     float: left;
-    width: width-calc($columns, $spacing);
+    width: 100% / $columns;
+    width: calc(#{ 100% / $columns } - #{ ($columns - 1) / $columns * $spacing });
     &:nth-child(n) {
       margin-top: $spacing;
       margin-left: $spacing;
@@ -30,5 +28,7 @@
 @mixin span ($span: $columns of $parent-columns, $spacing: 0rem) {
   $columns: nth($span, 1);
   $parent-columns: nth($span, 3);
-  width: width-calc($parent-columns / $columns, $spacing);
+  $relative-columns: $parent-columns / $columns;
+  width: 100% / $relative-columns;
+  width: calc(#{ 100% / $relative-columns } - #{ ($relative-columns - 1) / $relative-columns * $spacing });
 }

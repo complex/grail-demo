@@ -1,5 +1,5 @@
-//= require_tree .
 //= require_self
+//= require_tree .
 
 * {
   margin: 0;
@@ -8,9 +8,9 @@
 
 body {
   font-family: 'helvetica neue', 'arial', sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   color: #000;
-  background: #ccc;
+  background: #bbb;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -19,17 +19,40 @@ h2,
 h3,
 h4,
 h5,
-h6,
+h6 {
+  margin-top: 1em;
+  color: #fff;
+}
+
+h1 {
+  font-size: 10em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
 p {
   margin-top: 1em;
+  line-height: 140%;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: inherit;
+  border-bottom: solid .1em #000;
 }
 
 input,
 button {
   font-family: 'helvetica neue', 'arial', sans-serif;
-  font-size: 16px;
+  font-size: .7em;
   outline: none;
-  border-radius: .2rem;
   -webkit-font-smoothing: antialiased;
   &:focus {
 
