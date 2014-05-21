@@ -1,14 +1,14 @@
 <section id='introduction'>
   <h1>Grail</h1>
-  <p><%= link_to "Grail", 'http://github.com/harmed/grail' %> is a couple of Sass mixins you can use to quickly construct a grid layout.</p>
+  <p>Sass mixins for building grids.</p>
 </section>
 
 <section class='example' id='example-1'>
   <div class='buttons'>
-    <button>One column</button>
-    <button>Two columns</button>
-    <button>Three columns</button>
-    <button>Six columns</button>
+    <button data-columns='1'>One column</button>
+    <button data-columns='2'>Two columns</button>
+    <button data-columns='3'>Three columns</button>
+    <button data-columns='6'>Six columns</button>
   </div>
   <div class='one-column' id='grid-1'>
     <% for number in [ 1, 2, 3, 4, 5, 6 ] do %>
@@ -23,7 +23,20 @@
 
 <section id='documentation'>
 
-  <article>
+  <article id='install'>
+    <h2>Install</h2>
+    <p><%= link_to "Grail", 'http://github.com/harmed/grail' %> is packaged as a gem for easy use in a Rails project. Add it to your Gemfile:</p>
+    <code class='source'>
+<pre>gem 'grail', git: 'git@github.com:harmed/grail.git'</pre>
+    </code>
+    <p>Run <code>bundle install</code> and restart your server. To make the mixins available, import them in your stylesheet:</p>
+    <code class='source'>
+<pre>@import 'grail';</pre>
+    </code>
+    <p>If you don't need the gem, just grab <%= link_to "the SCSS file", 'https://github.com/harmed/grail/blob/master/app/assets/stylesheets/grail.scss' %>.</p>
+  </article>
+
+  <article id='columns'>
     <h2>Columns</h2>
     <p>To create equal width columns, just include the <em>columns()</em> mixin and pass in the number of columns you want. If there are more child elements than columns specified, you'll end up with multiple rows.</p>
     <figure id='first'>
@@ -34,7 +47,7 @@
       <p></p>
       <p></p>
     </figure>
-    <code>
+    <code class='source'>
 <pre>&lt;figure&gt;
   &lt;p&gt;&lt;/p&gt;
   &lt;p&gt;&lt;/p&gt;
@@ -60,7 +73,7 @@
       <p></p>
       <p></p>
     </figure>
-    <code>
+    <code class='source'>
 <pre>&lt;figure&gt;
   &lt;p&gt;&lt;/p&gt;
   &lt;p&gt;&lt;/p&gt;
@@ -75,7 +88,7 @@
     </code>
   </article>
 
-  <article>
+  <article id='spans'>
     <h2>Spans</h2>
     <p>To create unequal width columns, use the <em>span()</em> mixin. <em>span()</em>'s first argument specifies the width as a fraction. If you're using gutters, you must pass the amount as the second argument.</p>
     <figure id='third'>
@@ -86,7 +99,7 @@
       <p></p>
       <p></p>
     </figure>
-    <code>
+    <code class='source'>
 <pre>&lt;figure&gt;
   &lt;p&gt;&lt;/p&gt;
   &lt;p&gt;&lt;/p&gt;
@@ -121,7 +134,7 @@
     </code>
   </article>
 
-    <article>
+    <article id='nesting'>
       <h2>Nesting</h2>
       <p>A grid can be nested by simply adding the <em>columns()</em> mixin to a child element. Nested grids can have different gutter amounts.</p>
       <figure id='fourth'>
@@ -139,7 +152,7 @@
         </p>
         <p></p>
       </figure>
-      <code>
+      <code class='source'>
 <pre>&lt;figure&gt;
   &lt;p&gt;&lt;/p&gt;
   &lt;p&gt;
@@ -194,9 +207,10 @@
       </code>
     </article>
 
-    <article>
+    <article id='notes'>
       <h2>Notes</h2>
       <p>Grail uses the <%= link_to "calc", 'http://caniuse.com/calc' %> function to create margin-based gutters and the <%= link_to ":nth-child", 'http://caniuse.com/css-sel3' %> pseudoclass to maintain the correct margins with multiple rows.</p>
+      <p>Some browsers (notably Safari) lack subpixel layout support, which can result in gaps in the grid. By default, Grail floats the last element in each row to the right to keep the edge flush. If you want everything to float left, you can pass <code>$flush-right: false</code> to <em>columns()</em>.</p>
       <p>Grail was created by Tony Richards / <%= link_to "Harm", 'http://harm.io' %> in 2014 and it's <%= link_to "MIT licensed", 'http://opensource.org/licenses/MIT' %>.</p>
     </article>
 

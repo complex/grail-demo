@@ -9,16 +9,26 @@ figure {
   margin: 2em 0;
 }
 
+pre,
 code {
+  font-family: 'menlo', 'courier new', serif;
+  font-size: .9em;
+}
+
+code.source {
   display: block;
+  max-width: 70rem;
   margin: 2em auto;
   padding: 2rem;
   background: #fff;
 }
 
+p code {
+  background: rgba(0, 0, 0, .1);
+}
+
 pre {
   overflow: auto;
-  font-family: 'menlo', 'courier new', serif;
 
   &:first-child {
     color: #999;
@@ -28,6 +38,11 @@ pre {
     margin-top: 2rem;
   }
 
+}
+
+#install pre {
+  @include span(1 of 1);
+  color: #000;
 }
 
 mark {
@@ -71,16 +86,16 @@ mark {
 
   #grid-1 {
     margin-top: 1rem;
-    &.one-column {
+    &.columns-1 {
       @include columns(1);
     }
-    &.two-columns {
+    &.columns-2 {
       @include columns(2);
     }
-    &.three-columns {
+    &.columns-3 {
       @include columns(3);
     }
-    &.six-columns {
+    &.columns-6 {
       @include columns(6);
     }
 
@@ -248,7 +263,7 @@ mark {
 
 @media (min-width: 70rem) {
 
-  code {
+  code.source {
     @include columns(2, 2rem);
     width: 80%;
   }
