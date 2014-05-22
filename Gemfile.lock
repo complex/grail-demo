@@ -1,3 +1,9 @@
+GIT
+  remote: git@github.com:harmed/grail.git
+  revision: f9f725048a1680ff6f694d6fca983bbef08e8554
+  specs:
+    grail (2.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -46,7 +52,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     minitest (5.3.4)
-    multi_json (1.10.0)
+    multi_json (1.10.1)
     pg (0.17.1)
     polyglot (0.3.4)
     rack (1.5.2)
@@ -106,6 +112,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  grail!
   pg
   rails (= 4.1.1)
   rails_12factor
