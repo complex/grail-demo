@@ -33,7 +33,7 @@
     <code class='source'>
 <pre>@import 'grail';</pre>
     </code>
-    <p>If you don't need the gem, just grab <%= link_to "the SCSS file", 'https://github.com/harmed/grail/blob/master/app/assets/stylesheets/grail.scss' %>.</p>
+    <p>If you don't want to use the gem, you can just grab <%= link_to "the SCSS file", 'https://github.com/harmed/grail/blob/master/app/assets/stylesheets/grail.scss' %>.</p>
   </article>
 
   <article id='columns'>
@@ -210,7 +210,7 @@
     <article id='notes'>
       <h2>Notes</h2>
       <p>Grail uses the <%= link_to "calc", 'http://caniuse.com/calc' %> function to create margin-based gutters and the <%= link_to ":nth-child", 'http://caniuse.com/css-sel3' %> pseudoclass to maintain the correct margins with multiple rows.</p>
-      <p>Some browsers (notably Safari) lack subpixel layout support, which can result in gaps in the grid. By default, Grail floats the last element in each row to the right to keep the edge flush. If you want everything to float left, you can pass <code>$flush-right: false</code> to <em>columns()</em>.</p>
+      <p>Some browsers (notably Safari) lack subpixel layout support, which can result in rows not taking up a full 100%. By default, Grail floats the last element in each row to the right to keep the edge flush. If you want everything to float left, you can pass <code>$flush-right: false</code> to <em>columns()</em>.</p>
       <p>Grail was created by Tony Richards / <%= link_to "Harm", 'http://harm.io' %> in 2014 and it's <%= link_to "MIT licensed", 'http://opensource.org/licenses/MIT' %>.</p>
     </article>
 
