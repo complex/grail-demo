@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:harmed/grail.git
+  remote: https://github.com/harmed/grail.git
   revision: f9f725048a1680ff6f694d6fca983bbef08e8554
   specs:
     grail (2.1.0)

@@ -6,7 +6,7 @@ gem 'pg'
 gem 'sass-rails', '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier'
-gem 'grail', git: 'git@github.com:harmed/grail.git'
+gem 'grail', git: 'https://github.com/harmed/grail.git'
 
 group :development do
   gem 'spring'
