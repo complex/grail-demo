@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/harmed/grail.git
-  revision: f9f725048a1680ff6f694d6fca983bbef08e8554
+  revision: f00ad21dabe9f53e9ae70a6d062bbd6e28b672ec
   specs:
-    grail (2.1.0)
+    grail (2.1.1)
 
 GEM
   remote: https://rubygems.org/
