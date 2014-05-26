@@ -5,6 +5,7 @@ gem 'rails', '4.1.1'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'jquery-rails'
 gem 'uglifier'
 gem 'grail', git: 'https://github.com/harmed/grail.git'
 
