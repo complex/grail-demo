@@ -10,12 +10,12 @@ figure {
 }
 
 pre,
-code {
+.source {
   font-family: 'menlo', 'courier new', serif;
   font-size: .9em;
 }
 
-code.source {
+div.source {
   display: block;
   max-width: 30rem;
   margin: 2em auto;
@@ -23,7 +23,7 @@ code.source {
   background: #fff;
 }
 
-p code {
+p .source {
   white-space: nowrap;
   padding: 0 .3em;
   background: #aaa;
@@ -356,7 +356,7 @@ dd {
 
 @media (min-width: 60rem) {
 
-  code.source {
+  div.source {
     @include columns(2, 2rem);
     max-width: 50rem;
   }
