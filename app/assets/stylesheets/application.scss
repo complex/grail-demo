@@ -1,0 +1,80 @@
+//= require_self
+//= require home
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'helvetica neue', 'arial', sans-serif;
+  font-size: 20px;
+  color: #000;
+  background: #bbb;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 1em;
+  color: #fff;
+}
+
+h1 {
+  font-size: 4em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+p {
+  margin-top: 1em;
+  line-height: 140%;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: inherit;
+  border-bottom: solid .1em #000;
+}
+
+input,
+button {
+  font-family: 'helvetica neue', 'arial', sans-serif;
+  font-size: .7em;
+  outline: none;
+  -webkit-font-smoothing: antialiased;
+  &:focus {
+
+  }
+}
+
+input[type=submit],
+button {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+}
+
+main {
+  display: block;
+  margin: 1rem;
+}
+
+@media (min-width: 40rem) {
+
+  main {
+    margin: 5rem;
+  }
+
+}

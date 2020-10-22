@@ -1,0 +1,380 @@
+@import 'grail';
+
+h2 {
+  margin: 3em 0 1em 0;
+  border-bottom: solid .1em #fff;
+}
+
+figure {
+  margin: 2em 0;
+}
+
+pre,
+code {
+  font-family: 'menlo', 'courier new', serif;
+  font-size: .9em;
+}
+
+code.source {
+  display: block;
+  max-width: 30rem;
+  margin: 2em auto;
+  padding: 2rem;
+  background: #fff;
+}
+
+p code {
+  white-space: nowrap;
+  padding: 0 .3em;
+  background: #aaa;
+  background: rgba(0, 0, 0, .1);
+}
+
+pre {
+  overflow: auto;
+
+  &:first-child {
+    color: #999;
+  }
+
+  &:not(:first-child) {
+    margin-top: 2rem;
+  }
+
+}
+
+#install pre {
+  @include span(1 of 1);
+  color: #000;
+}
+
+mark {
+  background: #fffc6a;
+}
+
+dl {
+  @include columns(3, $flush-right: false);
+  margin: 2rem 0;
+  text-align: center;
+
+  > div {
+    padding: 1rem 0;
+    background: #fff;
+    border-top: solid .5rem rgba(0, 0, 0, .5);
+    &:nth-child(1) {
+      border-color: #66faff;
+    }
+    &:nth-child(2) {
+      border-color: #59e864;
+    }
+    &:nth-child(3) {
+      border-color: #fffc6a;
+    }
+    &:nth-child(4) {
+      border-color: #e8b355;
+    }
+    &:nth-child(5) {
+      border-color: #ff7a5e;
+    }
+  }
+
+}
+
+dt {
+  font-size: .7em;
+  font-weight: bold;
+}
+
+dd {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.example {
+
+  p {
+    height: 2rem;
+    background: #000;
+    background: rgba(0, 0, 0, .9);
+  }
+
+  button {
+    line-height: 2rem;
+    background: none;
+    border: solid .15rem #fff;
+    &:nth-child(3),
+    &:nth-child(4) {
+      display: none !important;
+    }
+  }
+
+}
+
+#introduction {
+
+  p {
+    font-size: 1.5em;
+  }
+
+}
+
+#one {
+  margin-top: 5rem;
+
+  > div {
+    padding: 1rem;
+    &:nth-child(1) {
+      @include columns(1, 1rem);
+      background: #fff;
+    }
+    &:nth-child(2) {
+      @include columns(2, 1rem);
+      background: #66faff;
+    }
+    &:nth-child(3) {
+      @include columns(3, 1rem);
+      background: #59e864;
+    }
+    &:nth-child(4) {
+      @include columns(4, 1rem);
+      background: #fffc6a;
+    }
+    &:nth-child(5) {
+      @include columns(5, 1rem);
+      background: #e8b355;
+    }
+    &:nth-child(6) {
+      @include columns(6, 1rem);
+      background: #ff7a5e;
+    }
+  }
+
+}
+
+#two {
+  @include columns(2, 1rem, $items: '> div');
+  margin-top: 2rem;
+
+  div,
+  p,
+  span {
+    min-height: 2rem;
+    margin: 0;
+    background: rgba(0, 0, 0, .2);
+  }
+
+  > p {
+    &:nth-of-type(1) {
+      margin-bottom: 1rem;
+    }
+  }
+
+  > div {
+    &:nth-of-type(1) {
+      @include span(1 of 3, 1rem);
+      height: 8rem;
+    }
+    &:nth-of-type(2) {
+      @include span(2 of 3, 1rem);
+      @include columns(2, 1rem);
+
+      > :nth-child(odd) {
+        @include span(1 of 4, 1rem);
+      }
+
+      > :nth-child(even) {
+        @include span(3 of 4, 1rem);
+      }
+
+      > :nth-child(4) {
+        @include columns(2, 1rem);
+      }
+
+      > :last-child {
+        @include columns(3, 1rem);
+      }
+    }
+    &:nth-of-type(3) {
+      @include span(6.666 of 10, 1rem);
+      @include columns(2, 1rem);
+      height: 5rem;
+
+      > :nth-child(1) {
+        @include span(1 of 4, 1rem);
+      }
+
+      > :nth-child(2) {
+        @include span(3 of 4, 1rem);
+      }
+
+      > :nth-child(3) {
+        @include span(3 of 4, 1rem);
+        @include columns(3, 1rem);
+      }
+
+      > :nth-child(4) {
+        @include span(1 of 4, 1rem);
+      }
+
+    }
+
+    &:nth-of-type(4) {
+      @include span(3.333 of 10, 1rem);
+      height: 5rem;
+    }
+
+    &:nth-of-type(5) {
+      @include columns(3, 1rem);
+    }
+
+  }
+
+}
+
+#documentation {
+  figure {
+    p {
+      height: 3rem;
+      background: #000;
+      background: rgba(0, 0, 0, .9);
+      border-top: solid .5rem;
+      &:nth-child(1) {
+        border-color: #fff;
+      }
+      &:nth-child(2) {
+        border-color: #66faff;
+      }
+      &:nth-child(3) {
+        border-color: #59e864;
+      }
+      &:nth-child(4) {
+        border-color: #fffc6a;
+      }
+      &:nth-child(5) {
+        border-color: #e8b355;
+      }
+      &:nth-child(6) {
+        border-color: #ff7a5e;
+      }
+    }
+  }
+}
+
+#first {
+  @include columns(3, $flush-right: false);
+}
+
+#second {
+  @include columns(3, 1rem);
+}
+
+#third {
+  @include columns(2, 1rem);
+
+  p {
+    &:nth-child(1) {
+      @include span(1 of 3, 1rem);
+    }
+    &:nth-child(2) {
+      @include span(2 of 3, 1rem);
+    }
+    &:nth-child(3) {
+      @include span(4 of 10, 1rem);
+    }
+    &:nth-child(4) {
+      @include span(6 of 10, 1rem);
+    }
+    &:nth-child(5) {
+      @include span(13 of 16, 1rem);
+    }
+    &:nth-child(6) {
+      @include span(3 of 16, 1rem);
+    }
+  }
+
+}
+
+#fourth {
+  @include columns(2, 1rem);
+
+  p {
+    &:nth-child(1) {
+      @include span(1 of 3, 1rem);
+    }
+    &:nth-child(2) {
+      @include span(2 of 3, 1rem);
+      @include columns(2, 2rem);
+    }
+    &:nth-child(3) {
+      @include span(4 of 10, 1rem);
+    }
+    &:nth-child(4) {
+      @include span(6 of 10, 1rem);
+    }
+    &:nth-child(5) {
+      @include span(13 of 16, 1rem);
+      @include columns(3, 2rem);
+      span {
+        &:nth-child(1) {
+          @include span(1 of 4, 2rem);
+        }
+        &:nth-child(2) {
+          @include span(2 of 4, 2rem);
+        }
+        &:nth-child(3) {
+          @include span(1 of 4, 2rem);
+        }
+      }
+    }
+    &:nth-child(6) {
+      @include span(3 of 16, 1rem);
+    }
+  }
+
+  span {
+    height: 2.5rem;
+    background: rgba(255, 255, 255, .2);
+  }
+
+}
+
+#fifth {
+  @include columns(2, 1rem);
+}
+
+@media (min-width: 40rem) {
+
+  dl {
+    @include columns(5, $flush-right: false);
+  }
+
+  #fifth {
+    @include columns(3, 1rem);
+  }
+
+}
+
+@media (min-width: 60rem) {
+
+  code.source {
+    @include columns(2, 2rem);
+    max-width: 50rem;
+  }
+
+  pre {
+
+    &:first-child {
+      @include span(1 of 3, 2rem);
+    }
+
+    &:last-child {
+      @include span(2 of 3, 2rem);
+    }
+
+  }
+
+  #fifth {
+    @include columns(6, 1rem);
+  }
+
+}

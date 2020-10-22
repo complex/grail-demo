@@ -1,0 +1,299 @@
+<section id='introduction'>
+  <h1>Grail</h1>
+  <p>Sass mixins for building grids.</p>
+</section>
+
+<section class='example' id='one'>
+  <% for number in [ 1, 2, 3, 4, 5, 6 ] do %>
+    <div>
+      <% number.times do %>
+        <p></p>
+      <% end %>
+    </div>
+  <% end %>
+</section>
+
+<section class='example' id='two'>
+  <p></p>
+  <div></div>
+  <div>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p>
+      <span></span>
+      <span></span>
+    </p>
+    <p></p>
+    <p>
+      <span></span>
+      <span></span>
+      <span></span>
+    </p>
+  </div>
+  <div>
+    <p></p>
+    <p></p>
+    <p>
+      <span></span>
+      <span></span>
+      <span></span>
+    </p>
+    <p></p>
+  </div>
+  <div></div>
+</section>
+
+<section id='documentation'>
+
+  <article id='install'>
+    <h2>Install</h2>
+    <p><%= link_to "Grail", 'http://github.com/complex/grail' %> is packaged as a gem for use in a Rails project. Add it to your Gemfile:</p>
+    <code class='source'>
+<pre>gem 'grail', git: 'https://github.com/complex/grail.git'</pre>
+    </code>
+    <p>Run <code>bundle install</code> and restart your server. To make the mixins available, import them in your stylesheet:</p>
+    <code class='source'>
+<pre>@import 'grail';</pre>
+    </code>
+    <p>Or, you can just grab <%= link_to "the SCSS file", 'https://github.com/complex/grail/blob/master/app/assets/stylesheets/grail.scss' %>.</p>
+  </article>
+
+  <article id='columns'>
+    <h2>Columns</h2>
+    <p>To create equal width columns, just include the <em>columns()</em> mixin and pass in the number of columns you want. If there are more child elements than columns specified, you'll end up with multiple rows.</p>
+    <figure id='first'>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+    </figure>
+    <code class='source'>
+<pre>&lt;figure&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+&lt;/figure&gt;</pre>
+<pre><em>figure</em> {
+  <mark>@include columns(3);</mark>
+}</pre>
+    </code>
+  </article>
+
+  <article>
+    <h2>Gutters</h2>
+    <p>To add spacing between columns and rows, <em>columns()</em> takes a second parameter — either a fixed size or a percentage.</p>
+    <figure id='second'>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+    </figure>
+    <code class='source'>
+<pre>&lt;figure&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+&lt;/figure&gt;</pre>
+<pre><em>figure</em> {
+  @include columns(3, <mark>1rem</mark>);
+}</pre>
+    </code>
+  </article>
+
+  <article id='spans'>
+    <h2>Spans</h2>
+    <p>To create unequal width columns, use the <em>span()</em> mixin. <em>span()</em>'s first argument specifies the width as a fraction. If you're using gutters, you must pass the amount as the second argument.</p>
+    <figure id='third'>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+    </figure>
+    <code class='source'>
+<pre>&lt;figure&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+&lt;/figure&gt;</pre>
+<pre><em>figure</em> {
+  @include columns(2, 1rem);
+}
+<em>p</em> {
+  <em>&:nth-child(1)</em> {
+    <mark>@include span(1 of 3, 1rem);</mark>
+  }
+  <em>&:nth-child(2)</em> {
+    <mark>@include span(2 of 3, 1rem);</mark>
+  }
+  <em>&:nth-child(3)</em> {
+    <mark>@include span(4 of 10, 1rem);</mark>
+  }
+  <em>&:nth-child(4)</em> {
+    <mark>@include span(6 of 10, 1rem);</mark>
+  }
+  <em>&:nth-child(5)</em> {
+    <mark>@include span(13 of 16, 1rem);</mark>
+  }
+  <em>&:nth-child(6)</em> {
+    <mark>@include span(3 of 16, 1rem);</mark>
+  }
+}</pre>
+    </code>
+  </article>
+
+    <article id='nesting'>
+      <h2>Nesting</h2>
+      <p>A grid can be nested by adding the <em>columns()</em> mixin to a child element. Nested grids can have different gutter amounts.</p>
+      <figure id='fourth'>
+        <p></p>
+        <p>
+          <span></span>
+          <span></span>
+        </p>
+        <p></p>
+        <p></p>
+        <p>
+          <span></span>
+          <span></span>
+          <span></span>
+        </p>
+        <p></p>
+      </figure>
+      <code class='source'>
+<pre>&lt;figure&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;
+    &lt;span&gt;&lt;/span&gt;
+    &lt;span&gt;&lt;/span&gt;
+  &lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;
+    &lt;span&gt;&lt;/span&gt;
+    &lt;span&gt;&lt;/span&gt;
+    &lt;span&gt;&lt;/span&gt;
+  &lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+&lt;/figure&gt;</pre>
+<pre><em>figure</em> {
+  @include columns(2, 1rem);
+}
+<em>p</em> {
+  <em>&:nth-child(1)</em> {
+    @include span(1 of 3, 1rem);
+  }
+  <em>&:nth-child(2)</em> {
+    @include span(2 of 3, 1rem);
+    <mark>@include columns(2, 2rem);</mark>
+  }
+  <em>&:nth-child(3)</em> {
+    @include span(4 of 10, 1rem);
+  }
+  <em>&:nth-child(4)</em> {
+    @include span(6 of 10, 1rem);
+  }
+  <em>&:nth-child(5)</em> {
+    @include span(13 of 16, 1rem);
+    <mark>@include columns(3, 2rem);</mark>
+    <em>span</em> {
+      <em>&:nth-child(1)</em> {
+        <mark>@include span(1 of 4, 2rem);</mark>
+      }
+      <em>&:nth-child(2)</em> {
+        <mark>@include span(2 of 4, 2rem);</mark>
+      }
+      <em>&:nth-child(3)</em> {
+        <mark>@include span(1 of 4, 2rem);</mark>
+      }
+    }
+  }
+  <em>&:nth-child(6)</em> {
+    @include span(3 of 16, 1rem);
+  }
+}</pre>
+      </code>
+    </article>
+
+    <article id='media-queries'>
+      <h2>Media queries</h2>
+      <p>To make a responsive grid, simply override the mixins in your media queries.</p>
+      <figure id='fifth'>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+      </figure>
+      <code class='source'>
+<pre>&lt;figure&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;/p&gt;
+&lt;/figure&gt;</pre>
+<pre><em>figure</em> {
+  @include columns(2, 1rem);
+}
+@media (min-width: 40rem) {
+  <em>figure</em> {
+    <mark>@include columns(3, 1rem);</mark>
+  }
+}
+@media (min-width: 60rem) {
+  <em>figure</em> {
+    <mark>@include columns(6, 1rem);</mark>
+  }
+}</pre>
+      </code>
+    </article>
+
+    <article id='notes'>
+      <h2>Notes</h2>
+      <p>Grail uses CSS's <%= link_to "calc", 'http://caniuse.com/calc' %> function and the <%= link_to ":nth-child & :nth-of-type", 'http://caniuse.com/css-sel3' %> pseudoclasses to create margin-based gutters.</p>
+      <dl>
+        <div>
+          <dt>Chrome</dt>
+          <dd>19</dd>
+        </div>
+        <div>
+          <dt>Firefox</dt>
+          <dd>4</dd>
+        </div>
+        <div>
+          <dt>IE</dt>
+          <dd>9</dd>
+        </div>
+        <div>
+          <dt>Opera</dt>
+          <dd>15</dd>
+        </div>
+        <div>
+          <dt>Safari</dt>
+          <dd>6</dd>
+        </div>
+      </dl>
+      <p>The <em>columns()</em> mixin assumes all children will be grid items but you can override this behavior by passing in <code>$items: '> p'</code>, replacing the selector with your own.</p>
+      <p>Some browsers (notably Safari) lack subpixel layout support, which can result in things being off by a few pixels. By default, Grail floats the last element in each row to the right to keep the edge flush. If you want everything to float left, you can pass <code>$flush-right: false</code> to <em>columns()</em>.</p>
+      <p>Grail was created by Tony Richards in 2014 and it's <%= link_to "MIT licensed", 'https://github.com/complex/grail/blob/master/LICENSE.txt' %>.</p>
+    </article>
+
+</section>
